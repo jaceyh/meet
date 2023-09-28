@@ -1,4 +1,4 @@
-Meet app is a PWA application created using React.js.
+<p>Meet app is a PWA application created using React.js. <br>  The serverless platform utilized is AWS Lambda.  This FaaS is fit the Meet app well because users sending a request through the app will initially be authorized through Google OAuth and then each request will be handled by an AWS Lambda function returning desired events to the user. </p>
 
 # User Stories
 ● As a user, I would like to be able to filter events by city so that I can see the list of events that
