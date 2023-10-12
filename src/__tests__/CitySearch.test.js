@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import { extractLocations, getEvents } from '../api';
 import userEvent from '@testing-library/user-event';
 import CitySearch from '../components/CitySearch';
 
