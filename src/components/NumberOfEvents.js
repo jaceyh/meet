@@ -5,7 +5,7 @@ const NumberOfEvents = ({ number }) => {
 
     const handleInputChanged = (event) => {
         const value = event.target.value;
-        const defaultValue = 32;
+       /* const defaultValue = 32;
         const filteredNumbers = allNumbers ? allNumbers.filter((number) => {
           return number.indexOf(value) > -1;
         }) : [];
@@ -19,7 +19,7 @@ const NumberOfEvents = ({ number }) => {
         setQuery(value);
         setShowSuggestions(false); // to hide the list
     };
-
+*/
     return (
         <div id="number-of-events">
             <input
@@ -45,4 +45,4 @@ const NumberOfEvents = ({ number }) => {
     )
    }
    
-   export default CitySearch; 
+   export default NumberOfEvents; 
