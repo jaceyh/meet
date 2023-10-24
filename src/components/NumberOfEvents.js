@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-const NumberOfEvents = ({setNumber}) => {
+const NumberOfEvents = ({ setNumber }) => {
 
     const handleInputChanged = (event) => {
         const value = event.target.value;
@@ -13,7 +13,7 @@ const NumberOfEvents = ({setNumber}) => {
             <input
             type="text"
             className="number-of-events"
-            placeholder="32"
+            //placeholder="32"
             defaultValue="32"
             onChange={handleInputChanged}
             />
