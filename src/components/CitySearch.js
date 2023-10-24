@@ -44,6 +44,6 @@ const CitySearch = ({ allLocations }) => {
             }
         </div>
     )
-   }
+}
    
    export default CitySearch;   
