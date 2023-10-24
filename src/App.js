@@ -13,7 +13,7 @@ function App() {
     <div className="App">
         <CitySearch /> 
         <EventList events={events}></EventList>
-        <NumberOfEvents />
+        <NumberOfEvents setNumber={setNumber}></NumberOfEvents>/>
     </div>
   );
 }
