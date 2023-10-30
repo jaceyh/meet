@@ -27,10 +27,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "node scripts/test.js",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "jest-preview": "jest-preview",
+    "test:debug": "npm-run-all -p test jest-preview"
   },
   "eslintConfig": {
     "extends": [
@@ -51,6 +53,8 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.0.0"
+    "gh-pages": "^6.0.0",
+    "jest-preview": "^0.3.1",
+    "npm-run-all": "latest"
   }
 }

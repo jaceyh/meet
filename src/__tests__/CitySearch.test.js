@@ -1,12 +1,13 @@
 import { render } from '@testing-library/react';
 import { extractLocations, getEvents } from '../api';
+import { debug }from 'jest-preview';
 import userEvent from '@testing-library/user-event';
 import CitySearch from '../components/CitySearch';
 
 describe('<CitySearch /> component', () => {
     let CitySearchComponent;
     beforeEach(() => {
-      CitySearchComponent = render(<CitySearch />);
+      CitySearchComponent = render(<CitySearch allLocations={[]}/>);
     });
 
     test('renders text input', () => {
@@ -42,7 +43,8 @@ describe('<CitySearch /> component', () => {
         //filter allLocations to locations matching "Berlin"
         const suggestions = allLocations? allLocations.filter((location) => {
             return location.toUpperCase().indexOf(cityTextBox.value.toUpperCase()) > -1;
-        }): [];
+        })
+        :[];
 
         //get all <li> elements inside the suggestion list
         const suggestionListItems = CitySearchComponent.queryAllByRole('listitem');
@@ -57,7 +59,7 @@ describe('<CitySearch /> component', () => {
         const user = userEvent.setup();
         const allEvents = await getEvents(); 
         const allLocations = extractLocations(allEvents);
-        CitySearchComponent.rerender(<CitySearch allLocations={allLocations} />);
+        CitySearchComponent.rerender(<CitySearch allLocations={allLocations} setCurrentCity={() => {}} />);
     
         const cityTextBox = CitySearchComponent.queryByRole('textbox');
         await user.type(cityTextBox, "Berlin");

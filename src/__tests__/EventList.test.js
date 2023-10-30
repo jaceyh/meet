@@ -1,11 +1,13 @@
 import { render } from '@testing-library/react';
 import { getEvents } from '../api';
+import { debug } from 'jest-preview';
 import EventList from '../components/EventList';
 
 describe('<EventList /> component', () => {
     let EventListComponent;
     beforeEach(() => {
         EventListComponent = render(<EventList />);
+        debug();
     })
 
     test('has an element with "list" role', () => {

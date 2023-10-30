@@ -1,4 +1,7 @@
 import '@testing-library/jest-dom';
+import { jestPreviewConfigure } from 'jest-preview'
+// TODO: To add your global css here
+import './index.css';
 
 // Here, add portions of the warning messages you want to intentionally prevent from appearing
 const MESSAGES_TO_IGNORE = [
@@ -12,4 +15,9 @@ const MESSAGES_TO_IGNORE = [
   console.error = (...args) => {
     const ignoreMessage = MESSAGES_TO_IGNORE.find(message => args.toString().includes(message));
     if (!ignoreMessage) originalError(...args);
-  }
+  
+
+jestPreviewConfigure({
+  // Opt-in to automatic mode to preview failed test case automatically.
+  autoPreview: true,
+})};

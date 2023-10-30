@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import { debug }from 'jest-preview';
 import userEvent from '@testing-library/user-event';
 import Event from '../components/Event';
 import mockData from '../mock-data'
@@ -9,6 +10,7 @@ describe('<Event /> component', () => {
     let EventComponent;
     beforeEach(() => {
         EventComponent = render(<Event event={mockEvent} />);
+        debug();
       });
 
     test('renders event location', () => {
