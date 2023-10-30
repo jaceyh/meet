@@ -41,8 +41,8 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
                     {suggestions.map((suggestion) => {
                         return <li onClick={handleItemClicked} key={suggestion}>{suggestion}</li>
                     })}
-                    <li onClick={handleItemClicked} key='See all cities'>
-                        <b>See all cities</b>
+                    <li key='See all cities' onClick={handleItemClicked}>
+                        <button>See all cities</button>
                     </li>
                 </ul> 
             : null

@@ -7,9 +7,10 @@ import { useState, useEffect } from 'react';
 import NumberOfEvents from './components/NumberOfEvents';
 import { extractLocations, getEvents } from "./api.js";
 
-const App = ( {setNumber, currentCity} ) => {
+const App = ( {setNumber} ) => {
     const [ events, setEvents ] = useState([]);
     const [ allLocations, setAllLocations] = useState([]);
+    const [ currentCity, setCurrentCity ] = useState("See all cities");
 
     useEffect(() => {
         fetchData();
@@ -28,7 +29,7 @@ const App = ( {setNumber, currentCity} ) => {
 
   return (
     <div className="App">
-        <CitySearch /> 
+        <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity}/> 
         <EventList events={events}></EventList>
         <NumberOfEvents />
     </div>
