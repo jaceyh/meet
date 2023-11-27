@@ -68,7 +68,7 @@ input[type="number"] {
   background-color: #a8ebe8;
 }
 
-.suggestions > li:last-child:hover {
+.see-ctys-btn:hover {
     background-color: #05d7cc;
 }
 

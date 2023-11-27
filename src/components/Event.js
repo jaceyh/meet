@@ -3,7 +3,7 @@ import { useState } from "react";
 const Event = ( {event} ) => {
     const [ showDetails, setShowDetails ] = useState(false);
     return (
-        <li id="event" class="event">
+        <li id="event" className="event">
             <h1>{event.summary}</h1>
             <p>{event.created}</p>
             <p>{event.location}</p>
