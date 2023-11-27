@@ -7,7 +7,9 @@ import NumberOfEvents from './components/NumberOfEvents';
 import { useState, useEffect } from 'react';
 import { extractLocations, getEvents } from "./api.js";
 
-const App = ( {setNumber} ) => {
+import './App.css';
+
+const App = () => {
     const [ events, setEvents ] = useState([]);
     const [ currentNOE, setCurrentNOE ] = useState(32);
     const [ allLocations, setAllLocations] = useState([]);
@@ -15,7 +17,7 @@ const App = ( {setNumber} ) => {
  
     useEffect(() => {
         fetchData();
-      }, [currentCity]);
+      }, [currentCity, currentNOE]);
     
     const fetchData = async () => {
         const allEvents = await getEvents();
@@ -30,7 +32,7 @@ const App = ( {setNumber} ) => {
   return (
     <div className="App">
         <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity}/> 
-        <NumberOfEvents />
+        <NumberOfEvents setCurrentNOE={setCurrentNOE}/>
         <EventList events={events}></EventList>
     </div>
   );

@@ -7,7 +7,7 @@ describe('<NumberOfEvents /> component', () => {
     let NumberOfEventsComponent;
     beforeEach(() => {
         // setup a DOM element as a render target
-        NumberOfEventsComponent = render(<NumberOfEvents />);
+        NumberOfEventsComponent = render(<NumberOfEvents setCurrentNOE={() => {}}/>);
     });
 
     test('renders text input', () => {
@@ -24,7 +24,7 @@ describe('<NumberOfEvents /> component', () => {
 
     test('value of the NumberOfEvents textbox has a value that changes accordingly when a user .type()s in it', async () => {
         const user = userEvent.setup();
-        NumberOfEventsComponent.rerender(<NumberOfEvents/>);
+        NumberOfEventsComponent.rerender(<NumberOfEvents setCurrentNOE={() => {}}/>);
 
         //user types "100" in textbox
         const numberTextBox = NumberOfEventsComponent.queryByRole('textbox');
