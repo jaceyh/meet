@@ -10,7 +10,7 @@
 
 ul {
   padding: 0;
-  list-style-type: none;
+  list-style: none;
 }
 
 p {
@@ -70,6 +70,9 @@ input[type="number"] {
 
 .see-ctys-btn:hover {
     background-color: #05d7cc;
+    border:#eee;
+    border-radius: 4px;
+
 }
 
 .event {
