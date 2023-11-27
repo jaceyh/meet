@@ -3,7 +3,6 @@ import './App.css';
 import CitySearch from './components/CitySearch';
 import EventList from './components/EventList';
 import NumberOfEvents from './components/NumberOfEvents';
-import Event from './components/Event';
 
 import { useState, useEffect } from 'react';
 import { extractLocations, getEvents } from "./api.js";
