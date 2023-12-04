@@ -1,5 +1,8 @@
+/* eslint-disable testing-library/no-node-access */
+/* eslint-disable testing-library/prefer-presence-queries */
+/* eslint-disable testing-library/prefer-screen-queries */
+/* eslint-disable testing-library/no-render-in-setup */
 import { render } from '@testing-library/react';
-import { debug }from 'jest-preview';
 import userEvent from '@testing-library/user-event';
 import Event from '../components/Event';
 import mockData from '../mock-data'
@@ -10,8 +13,7 @@ describe('<Event /> component', () => {
     let EventComponent;
     beforeEach(() => {
         EventComponent = render(<Event event={mockEvent} />);
-        debug();
-      });
+    });
 
     test('renders event location', () => {
         expect(EventComponent.queryByText(mockEvent.location)).toBeInTheDocument();

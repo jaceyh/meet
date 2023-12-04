@@ -1,6 +1,9 @@
+/* eslint-disable testing-library/no-node-access */
+/* eslint-disable testing-library/render-result-naming-convention */
+/* eslint-disable testing-library/prefer-screen-queries */
+/* eslint-disable testing-library/no-render-in-setup */
 import { render, within } from '@testing-library/react';
 import { extractLocations, getEvents } from '../api';
-import { debug }from 'jest-preview';
 import userEvent from '@testing-library/user-event';
 
 import CitySearch from '../components/CitySearch';
