@@ -2,7 +2,6 @@
 import { loadFeature, defineFeature } from "jest-cucumber";
 import { render, within, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { getEvents } from "../api";
 import App from "../App";
 
 const feature = loadFeature('./src/features/showHideAnEventsDetails.feature');
@@ -16,9 +15,6 @@ defineFeature(feature, test => {
             AppComponent = render(<App />); 
         });
 
-        let AppDOM;
-        let EventListDOM;
-        let eventListItems;
         when('user receives the list of upcoming events for all cities or selected city', async () => {
             const AppDOM = AppComponent.container.firstChild;
             const EventListDOM = AppDOM.querySelector('#event-list');
@@ -30,32 +26,47 @@ defineFeature(feature, test => {
         });
 
         then('user will see only main details for the event', async () => {
-            const EventDOM = AppComponent.container.firstChild;
-            const details = EventDOM.querySelector('#details');
-            expect(details).not.toBeInTheDocument();
+            const eventList = AppComponent.container.querySelector('#event-list');
+            const eventItems = within(eventList).queryAllByRole('listitem');
+            eventItems.forEach((eventItem) => {
+                const details = within(eventItem).queryByTestId('.details');
+                expect(details).not.toBeInTheDocument();
+            });
         });
     });
 
     test('User can expand an event to see details.', ({ given, when, then }) => {
-        let AppComponent;
-        given('user is viewing a list of events', () => {
-            AppComponent = render(<App />);
-        });
 
-        let EventListDOM;
-        let eventElements;
-        when('user clicks button to view more details about a specific event', async () => {
-            const user = userEvent.setup();
+        let AppComponent;
+        given('user is viewing a list of events', async () => {
+            AppComponent = render(<App />);
             const AppDOM = AppComponent.container.firstChild;
             const EventListDOM = AppDOM.querySelector('#event-list');
-            const eventElements = within(EventListDOM).queryAllByRole('listitem');
-            const detailsButton = within(EventListDOM).queryByRole('button');
+
+            await waitFor(() => {
+                const eventListItems = within(EventListDOM).queryAllByRole('listitem');
+                expect(eventListItems.length).toBe(32);
+            });
+        });
+
+        let EventDOM;
+        when('user clicks button to view more details about a specific event', async () => {
+            const user = userEvent.setup();
+            const EventListDOM = AppComponent.container.firstChild;
+            const EventDOM = within(EventListDOM).queryAllByRole('listitem');
+
+            /*const EventDOM = AppComponent.container.querySelector('#event');*/
+
+            //SO first start here - need to find way to narrow down EVENTDOM to the one clicked
+            const detailsButton = within(EventDOM).queryByRole('button');
 
             await user.click(detailsButton);
         });
 
         then('selected event expands showing all details', async () => {
-            const details = eventElements.queryByTestID('.details');
+            const EventDOM = AppComponent.container.firstChild;/*querySelector('#event');*/
+            console.log(EventDOM);
+            const details = EventDOM.querySelector('.details');
             expect(details).toBeInTheDocument();
         });
     });
