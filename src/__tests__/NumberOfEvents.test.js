@@ -23,7 +23,7 @@ describe('<NumberOfEvents /> component', () => {
         expect(numberTextBox.value).toBe("32");
     });
 
-    test('value of the NumberOfEvents textbox has a value that changes accordingly when a user .type()s in it', async () => {
+    test('value of the NumberOfEvents textbox has a value that changes accordingly when a user .types in it', async () => {
         const user = userEvent.setup();
         NumberOfEventsComponent.rerender(<NumberOfEvents setCurrentNOE={() => {}}/>);
 
