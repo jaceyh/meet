@@ -10,7 +10,6 @@ Feature: Show/Hide event details
         Then selected event expands showing all details
 
     Scenario: User can collapse an event to hide details.
-        Given user has clicked to view all details of an event 
-        And the selected event details are displayed
+        Given user has clicked to view all details of an event and the selected event details are displayed
         When user clicks button to collapse the selected event
         Then selected event details collapse

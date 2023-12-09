@@ -68,12 +68,10 @@ defineFeature(feature, test => {
         });
     });
 
-    test('User can collapse an event to hide details.', ({ given, and, when, then }) => {
+    test('User can collapse an event to hide details.', ({ given, when, then }) => {
+
         let AppComponent;
-        let EventListDOM;
-        let detailsButton;
-        let eventItem;
-        given('user has clicked to view all details of an event', async () => {
+        given('user has clicked to view all details of an event and the selected event details are displayed', async () => {
             AppComponent = render(<App />);
             const user = userEvent.setup();
             const AppDOM = AppComponent.container.firstChild;
@@ -85,24 +83,29 @@ defineFeature(feature, test => {
             });
         
             const eventItem = within(EventListDOM).queryAllByRole('listitem')[0];
-            console.log(eventItem);
 
             const detailsButton = within(eventItem).queryByRole('button');
 
             await user.click(detailsButton);
-        });
 
-        and('the selected event details are displayed', () => {
-            const details = within(eventItem).queryByTestId('details');
-            expect(details).toBeInTheDocument();
+            await waitFor(() => {
+                const EventDOM = AppComponent.container.firstChild;
+                const details = EventDOM.querySelector('.details');
+                expect(details).toBeInTheDocument();
+            });
         });
 
         when('user clicks button to collapse the selected event', async () => {
             const user = userEvent.setup();
-            await user.click(detailsButton);
+            const EventDOM = AppComponent.container.firstChild;
+            const hideDetailsButton = EventDOM.querySelector('#show-details-btn');
+            await user.click(hideDetailsButton);
         });
 
-        then('selected event details collapse', () => {
+        then('selected event details collapse', async () => {
+            const EventDOM = AppComponent.container.firstChild;
+
+            const details = within(EventDOM).queryByTestId('details');
             expect(details).not.toBeInTheDocument();
         });
     });
