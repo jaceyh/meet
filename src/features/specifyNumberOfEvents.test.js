@@ -32,16 +32,31 @@ defineFeature(feature, test => {
     });
 
     test('User can change the number of events displayed.', ({ given, when, then }) => {
-        given(/^user sees (\d+) events and would like to view another number of events$/, (arg0) => {
 
+        let AppComponent;
+        let eventList;
+        given(/^user sees (\d+) events and would like to view another number of events$/, async (arg0) => {
+            AppComponent = render (<App />)
+            const AppDOM = AppComponent.container.firstChild;
+            await waitFor(() => {
+                const eventList = within(AppDOM).queryAllByRole('listitem');
+                expect(eventList.length).toEqual(32);
+            });
         });
 
-        when('user inputs another number', () => {
-
+        let noeDOM;
+        when('user inputs another number', async () => {
+            const user = userEvent.setup();
+            const AppDOM = AppComponent.container.firstChild;
+            noeDOM = AppDOM.querySelector('#number-of-events');
+            const noeInput = within(noeDOM).queryByRole('textbox');
+            await user.type(noeInput, "{backspace}{backspace}10");
         });
 
         then('user will be shown the amount of events they have input', () => {
-
+            const AppDOM = AppComponent.container.firstChild;
+            const eventList = within(AppDOM).queryAllByRole('listitem');
+            expect(eventList.length).toEqual(10);
         });
     });
 
