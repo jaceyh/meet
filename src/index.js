@@ -24,7 +24,3 @@ serviceWorkerRegistration.unregister();
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
-
-
-//check atatus has been integrated
-atatus.notify(new Error('Test Atatus Setup'));
