@@ -40,8 +40,8 @@ const CityEventsChart = ({ allLocations, events }) => {
         <XAxis 
         type="category" 
         dataKey="city" 
-        name="City" 
-        angle={60} 
+        name="City"
+        angle={50} 
         interval={0} 
         tick={{ dx: 20, dy: 40, fontSize: 14 }} 
         />

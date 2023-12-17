@@ -7,11 +7,10 @@ import {
     Legend 
 } from 'recharts';
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#976ef8'];
-
 const EventGenreChart =  ({events}) => {
     const [data, setData] = useState([]);
     const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'Angular'];
+    const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#976ef8'];
 
     useEffect(() => {
         setData(getData());
@@ -56,9 +55,10 @@ const EventGenreChart =  ({events}) => {
             fill="#8884d8"
             labelLine={false}
             label={renderCustomizedLabel}
-            outerRadius={130} >
-            {data.map((genre, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            outerRadius={130}>
+                <Legend verticalAlign="top" align='center'/>
+            {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={colors[index]}/>
             ))} 
             </Pie>
           </PieChart>
