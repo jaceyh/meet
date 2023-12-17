@@ -15,6 +15,10 @@
     margin-bottom: 10px;
 }
 
+.charts-container {
+    grid-template-columns: 1fr 1fr;
+}
+
 ul {
     padding: 0;
     list-style: none;
@@ -111,4 +115,10 @@ input[type="number"] {
     left: 20px;
     width: 250px;
     z-index: 1000;
-  }
+}
+
+ @media (max-width: 768px) {
+    .charts-container{
+    grid-template-columns: 1fr;
+    }
+ }
