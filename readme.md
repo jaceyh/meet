@@ -1,8 +1,7 @@
 <p>Meet app is a PWA application created using React.js. <br>  The serverless platform utilized is AWS Lambda.  This FaaS is fit the Meet app well because users sending a request through the app will initially be authorized through Google OAuth and then each request will be handled by an AWS Lambda function returning desired events to the user. </p>
 
 # User Stories
-● As a user, I would like to be able to filter events by city so that I can see the list of events that<br>
-take place in that city.
+● As a user, I would like to be able to filter events by city so that I can see the list of events that take place in that city. <br>
 ● As a user, I would like to be able to show/hide event details so that I can see more/less
 information about an event.<br>
 ● As a user, I would like to be able to specify the number of events I want to view in the app so that I can see more or fewer events in the events list at once.<br>
